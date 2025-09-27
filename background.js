@@ -35,23 +35,45 @@ async function keepSessionAlive() {
           await chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: () => {
-              // Send a lightweight request to keep session alive
-              // This mimics user activity without interfering with the page
+              // Strategy 1: Try to send a lightweight keepalive request
               fetch('/api/keepalive', { 
                 method: 'HEAD',
                 credentials: 'include'
               }).catch(() => {
-                // If specific endpoint doesn't exist, try a general approach
-                // Refresh session token or make a lightweight request
+                // Strategy 2: Load favicon to maintain session
                 const img = new Image();
                 img.src = '/favicon.ico?' + Date.now();
               });
+              
+              // Strategy 3: Simulate subtle user activity
+              // This creates a minimal DOM interaction to signal activity
+              document.body.dispatchEvent(new Event('mousemove', { bubbles: false }));
+              
+              // Strategy 4: Touch localStorage to indicate activity
+              try {
+                const timestamp = Date.now();
+                localStorage.setItem('ap_extension_keepalive', timestamp.toString());
+                
+                // Clean up old timestamp after a moment
+                setTimeout(() => {
+                  try {
+                    localStorage.removeItem('ap_extension_keepalive');
+                  } catch (e) {
+                    // Ignore cleanup errors
+                  }
+                }, 5000);
+              } catch (e) {
+                // localStorage might be restricted, ignore
+              }
             }
           });
         } catch (error) {
+          // Tab might not be ready or accessible
           console.log('Could not execute script in tab:', tab.id, error);
         }
       }
+    } else {
+      console.log('No College Board tabs found for session keep-alive');
     }
   } catch (error) {
     console.error('Error in session keep-alive:', error);

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Classroom Extension Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .demo-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .assignment-demo {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 0;
+            background: white;
+        }
+        
+        .assignment-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .assignment-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        .installation-steps {
+            background: #e6f3ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .step {
+            margin: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #0066cc;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .installation-steps {
+            counter-reset: step-counter;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎓 AP Classroom Assistant Demo</h1>
+    
+    <p>This page demonstrates the AP Classroom Assistant Chrome extension functionality and provides installation instructions.</p>
+    
+    <div class="demo-section">
+        <h2>✨ Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-title">Session Keep-Alive</div>
+                <p>Prevents automatic logout from College Board</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <div class="feature-title">Assignment Navigation</div>
+                <p>Quick access to all active assignments</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="installation-steps">
+        <h2>🚀 Installation Instructions</h2>
+        <div class="step">Open Chrome and navigate to <strong>chrome://extensions/</strong></div>
+        <div class="step">Enable <strong>"Developer mode"</strong> in the top right corner</div>
+        <div class="step">Click <strong>"Load unpacked"</strong> button</div>
+        <div class="step">Select the AP-Classroom-Plugin folder</div>
+        <div class="step">The extension icon will appear in your toolbar</div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>📱 UI Preview</h2>
+        <p>Here's what the extension popup looks like with sample assignment data:</p>
+        
+        <div class="assignment-demo">
+            <div class="assignment-title">Unit 3 Progress Check: MCQ</div>
+            <div style="font-size: 12px; color: #0066cc; background: rgba(0, 102, 204, 0.1); padding: 2px 8px; border-radius: 4px; display: inline-block; margin: 8px 0;">AP Psychology</div>
+            <div class="assignment-meta">
+                <span>📅 Due: Oct 15, 2024</span>
+                <span class="status-active">ACTIVE</span>
+            </div>
+        </div>
+        
+        <div class="assignment-demo">
+            <div class="assignment-title">Rhetorical Analysis Essay</div>
+            <div style="font-size: 12px; color: #0066cc; background: rgba(0, 102, 204, 0.1); padding: 2px 8px; border-radius: 4px; display: inline-block; margin: 8px 0;">AP English Language</div>
+            <div class="assignment-meta">
+                <span>📅 Due: Oct 20, 2024</span>
+                <span class="status-active">ACTIVE</span>
+            </div>
+        </div>
+        
+        <div class="assignment-demo">
+            <div class="assignment-title">Chapter 7 Problem Set</div>
+            <div style="font-size: 12px; color: #0066cc; background: rgba(0, 102, 204, 0.1); padding: 2px 8px; border-radius: 4px; display: inline-block; margin: 8px 0;">AP Calculus BC</div>
+            <div class="assignment-meta">
+                <span>📅 Due: Oct 18, 2024</span>
+                <span class="status-active">ACTIVE</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>🔧 Technical Implementation</h2>
+        <p>The extension uses modern Chrome Extension APIs:</p>
+        
+        <h3>Background Service Worker</h3>
+        <div class="code-block">
+// Session keep-alive every 10 minutes
+chrome.alarms.create('sessionKeepAlive', {
+  delayInMinutes: 1,
+  periodInMinutes: 10
+});
+
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === 'sessionKeepAlive') {
+    keepSessionAlive();
+  }
+});
+        </div>
+        
+        <h3>Content Script Assignment Extraction</h3>
+        <div class="code-block">
+// Extract assignments from AP Classroom pages
+const assignmentLinks = document.querySelectorAll('a[href*="/assignment/"]');
+assignmentLinks.forEach(link => {
+  const assignment = extractAssignmentInfo(link);
+  if (assignment && assignment.status === 'active') {
+    assignments.push(assignment);
+  }
+});
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>🧪 Testing</h2>
+        <p>To test the extension:</p>
+        <ol>
+            <li><strong>Install the extension</strong> using the instructions above</li>
+            <li><strong>Log in to College Board</strong> at https://collegeboard.org</li>
+            <li><strong>Visit AP Classroom</strong> at https://apstudents.collegeboard.org</li>
+            <li><strong>Navigate through your courses</strong> to let the extension collect data</li>
+            <li><strong>Click the extension icon</strong> to see your assignments</li>
+        </ol>
+        
+        <p><strong>Debug Mode:</strong> Go to <code>chrome://extensions/</code> and click "Inspect views: background page" to see console logs.</p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>⚠️ Important Notes</h2>
+        <ul>
+            <li><strong>Requires College Board Account:</strong> You need an actual College Board account with AP Classroom access for full functionality</li>
+            <li><strong>Privacy First:</strong> The extension stores data locally only and never transmits your credentials</li>
+            <li><strong>Not Official:</strong> This is an independent tool, not affiliated with College Board</li>
+            <li><strong>Academic Integrity:</strong> Use responsibly and follow your school's technology policies</li>
+        </ul>
+    </div>
+    
+    <div class="demo-section">
+        <h2>📞 Support</h2>
+        <p>If you encounter issues:</p>
+        <ul>
+            <li>Check the browser console for error messages</li>
+            <li>Verify you're logged in to College Board</li>
+            <li>Make sure you've visited your AP Classroom pages</li>
+            <li>Try the refresh button in the extension popup</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Add some interactive demo functionality
+        document.querySelectorAll('.assignment-demo').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                    alert('In the real extension, this would open the assignment page!');
+                }, 150);
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#0066cc';
+                card.style.boxShadow = '0 2px 8px rgba(0, 102, 204, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#e9ecef';
+                card.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
