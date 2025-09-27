@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "AP Classroom Assistant",
+  "version": "1.0.0",
+  "description": "Keep College Board sessions alive and navigate AP Classroom assignments efficiently",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "cookies",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://apstudents.collegeboard.org/*",
+    "https://collegeboard.org/*",
+    "https://*.collegeboard.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://apstudents.collegeboard.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AP Classroom Assistant",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html", "popup.css", "popup.js"],
+      "matches": ["https://apstudents.collegeboard.org/*"]
+    }
+  ]
+}
